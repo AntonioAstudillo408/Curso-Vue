@@ -1,29 +1,29 @@
 <script setup>
-    defineProps(['title' , 'author']);
+ const props =  defineProps(['title' , 'body' , 'id']);
+ const emit = defineEmits(['cambiarFavoritoNombre']);
 
 
-//    defineProps({
-//     title:String,
-//     id:nunmbe
-//    })
+const actualizarFavorito = () => emit('cambiarFavoritoNombre' , props.title);
+
+
 </script>
 
 
 
 
 <template>
-    <div class="card">
+    <div class="card mb-2">
         <div class="card-body">
             <h5 class="card-title">
-                {{ title }}
+              {{ id }} - {{ title }}
             </h5>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque dicta quod exercitationem distinctio tempora nisi pariatur aut? Reprehenderit maxime magni repellendus. Odit eius fugiat tempora quisquam doloribus quasi, provident blanditiis!</p>
+            <p>{{ body }} </p>
        
             <blockquote>
-                Author - {{ author }}
+                Author - Antonio Astudillo
             </blockquote>
 
-            <button @click="$emit('cambiarFavorito', title)" 
+            <button @click="actualizarFavorito" 
             class="btn btn-outline-dark">Favorito</button>
        </div>
     </div>
